@@ -5,6 +5,7 @@ class InfoFeeder{
  InfoFeeder(String filename) {
    json = loadJSONObject(filename);
    quarters = json.getJSONArray("events");
+   getCoordinates();
  }
  
  String getGameInfo() {
@@ -45,5 +46,9 @@ class InfoFeeder{
    allplayers.add(hometeam);
    allplayers.add(visitingteam);
    return allplayers;
+ }
+ 
+ JSONArray getCoordinates() {
+   return quarters.getJSONObject(0).getJSONArray("moments");
  }
 }
